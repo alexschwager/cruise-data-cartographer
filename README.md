@@ -62,7 +62,7 @@ column-by-column restatement, a "how the week goes" tour, no wrong
 neighbour) **fails on six checks.** `verify.py map` runs the audit alone;
 `verify.py card <file>` audits one card.
 
-## One real cold walk, published with its defects (receipts/cold-walk-1.md)
+## Two real walks, published with their defects (receipts/)
 
 A fresh model instance with no memory of the territory was handed the
 catalog, allowed ONE card, and asked a real product question ("wifi
@@ -76,6 +76,15 @@ guess about the change path was **wrong** (the projection splits tier
 metadata from inclusions), which is exactly the fact the card now carries.
 The walk is preserved verbatim, disposition table included.
 
+The second receipt (`receipts/control-run.md`) is a **control**: a fresh
+instance handed the same question and the whole repo with NO instruction to
+use the catalog or any walk order. It converged on catalog → one card →
+stop unaided — five files read, three strictly needed — which is the claim
+the structure makes: the doors route by shape, not only by obedience. Its
+own caveat is kept prominently: the walk was pre-warmed, because the cards
+had already absorbed cold-walk-1's fixes; the virgin map's failure is the
+first receipt. The pair is the honest unit.
+
 ## The folder
 
 | File | The one job |
@@ -86,7 +95,7 @@ The walk is preserved verbatim, disposition table included.
 | `reference/card-types.md` | The closed set: noun, namespace, mirror, access-rule cards; the live / live-empty / leftover / ghost taxonomy. |
 | `reference/walk-order-and-collisions.md` | How a cold model walks, and this territory's naming collisions written down. |
 | `map/` | The product: `catalog.md` + 13 cards. |
-| `receipts/` | The published cold walk, verbatim, defects and dispositions kept. |
+| `receipts/` | The published walks — a cold walk and an uninstructed control — verbatim, defects and dispositions kept. |
 | `tests/` | The offline verifier + the photocopy fixture it must reject. |
 
 ## Provenance
@@ -102,15 +111,47 @@ corrected the author twice before a single card existed: the "port table"
 a manifest named does not exist, and a table assumed dead is wired in four
 files. Row counts are the capture date's; the map says so on every cite.
 
+## What this map learned from a rival
+
+A fellow comp entrant's cartographer —
+[Cassini](https://github.com/astetic-dev/cassini-cartographer) — was run
+over this series' sibling repo, and its method files were read closely.
+Four things were adopted here, with credit:
+
+- **Dead takes two sightings.** Cassini requires four sightings before
+  anything is marked dead; this map's verifier now mechanically requires
+  at least two NAMED, independent sightings on every ghost/leftover card
+  (a wiring search plus a data probe). Earned locally: a
+  substring-inflated grep once made three retired agents look heavily
+  wired on a sibling map.
+- **Write the catalog last, put it first.** Now a rule; it was only a
+  practice.
+- **Counts, not verdicts.** No quality adjectives about the territory —
+  the audit that reads the map owns the judgments.
+- **The control run.** `receipts/control-run.md` exists because Cassini's
+  receipts include a naked-Claude control reported honestly even where it
+  beat the author's predictions. Same protocol here.
+
+Two of Cassini's rules were considered and **declined**, reasons on the
+record: *"never report your own search"* (on this map the search IS the
+receipt — dead statuses cite re-runnable commands precisely so a stranger
+can falsify them; hiding the instrument would trade falsifiability for
+polish), and *prose-first map bodies* (this catalog stays doors plus a
+three-sentence orientation cap — the card, not the catalog, is where prose
+earns its keep, and a catalog that narrates is a tour growing).
+
 ## Don't take the claims — where each would break
 
 - **"Cards cite source; source wins."** The verifier checks cites exist
   and are dated — not that they are still true. A card is re-verified on
   touch (rules.md Rule 8); between touches it decays like any map.
-- **"Two hops suffice."** Demonstrated on one real cold walk and one
-  constructed set in examples.md. Walk 1's caveat stands: one question
-  needed a fact the card lacked (now added). More walks would find more —
-  that is what receipts/ is for.
+- **"Two hops suffice."** Demonstrated on two real walks (one cold, one
+  uninstructed control) and one constructed set in examples.md. Walk 1's
+  caveat stands: one question needed a fact the card lacked (now added) —
+  and the control's caveat stands with it: it validated the *fixed* map,
+  not the virgin one. Both walks used the same question; the next receipt
+  should be a new one. More walks would find more — that is what
+  receipts/ is for.
 - **"No photocopies."** Enforced by size caps and fence caps; a prose
   restatement under the cap slips the scanner. The real line is rules.md
   Rule 4, held by a human.

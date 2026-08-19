@@ -34,6 +34,13 @@ def check(name, ok, detail=""):
     return ok
 
 
+def section(text, heading_prefix):
+    """Return the body of the first '## ' section whose heading starts with prefix."""
+    pattern = rf"^{re.escape(heading_prefix)}[^\n]*\n(.*?)(?=^## |\Z)"
+    m = re.search(pattern, text, re.DOTALL | re.MULTILINE)
+    return m.group(1) if m else None
+
+
 def check_card(path, cards_dir=None):
     text = Path(path).read_text(encoding="utf-8")
     name = Path(path).name
@@ -54,8 +61,13 @@ def check_card(path, cards_dir=None):
         check(f"{name}: has '{sec}'", sec in text)
 
     if st in ("leftover", "ghost"):
-        check(f"{name}: dead card carries Evidence of absence",
-              "## Evidence of absence" in text)
+        ev = section(text, "## Evidence of absence")
+        check(f"{name}: dead card carries Evidence of absence", ev is not None)
+        if ev is not None:
+            sightings = re.findall(r"^- ", ev, re.MULTILINE)
+            check(f"{name}: dead status rests on >=2 named sightings",
+                  len(sightings) >= 2,
+                  f"{len(sightings)} sighting bullets (one search lies too easily)")
     if st == "live-empty":
         check(f"{name}: live-empty cites the 0-row count", "0 rows" in text)
 
