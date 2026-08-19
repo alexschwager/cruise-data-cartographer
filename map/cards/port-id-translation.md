@@ -14,10 +14,12 @@ consumes it.
 
 ## Evidence of absence
 
-`grep -rl "port_id_translation_v2_to_master" backend/ scripts/` in the
-platform repo returns **0 files** (run 2026-08-18; re-run it before
-trusting this card). Rows present, readers absent: the definition of
-leftover, per reference/card-types.md.
+- Wiring: `grep -rl "port_id_translation_v2_to_master" backend/ scripts/`
+  in the platform repo returns **0 files** (run 2026-08-18; re-run before
+  trusting this card).
+- Data: 306 rows present via `pg_stat_user_tables` (same date) — so this
+  is rows-without-readers: the definition of leftover, per
+  reference/card-types.md, on two independent instruments.
 
 ## Hits — if you change this
 

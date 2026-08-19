@@ -30,10 +30,19 @@ Every card carries exactly one status, each with a required evidence form:
 | `leftover` | data or file present, **no wiring** | the absence search that found no readers/writers |
 | `ghost` | a name that exists, with no wiring and no data | 0-row count + the absence search |
 
-**The absence search is mandatory for `leftover` and `ghost`** — name the
-grep/introspection that came back empty, so a later reader can re-run it.
-Mapping a wish as live is how the next reader implements the wrong world;
-mapping a wired table as dead is how they re-implement one that exists.
+**Marking anything dead takes at least TWO independent sightings, each
+named** — different instruments, not the same grep twice: a wiring search
+plus a data/usage probe, or a code sweep plus the live catalog. One search
+lies too easily (a substring-inflated grep once made three retired agents
+look heavily wired; an over-broad exclusion filter once swallowed a true
+pointer). Name every sighting on the card so a later reader can re-run
+them. Mapping a wish as live is how the next reader implements the wrong
+world; mapping a wired table as dead is how they re-implement one that
+exists.
+
+And no quality adjectives about the territory — not *messy*, not *legacy*,
+not *over-engineered*. Counts and statuses; verdicts belong to whatever
+audit reads the map, never to the map.
 
 ## Rule 3 — every card names Hits and Does-not-hit
 
@@ -57,9 +66,15 @@ the card is wrong**; fix the card, dated.
 
 The catalog holds one line per door: a question or noun, an arrow, a card
 path. It stores no facts of its own — no counts, no status reasons, no
-mini-summaries that grow into a second map. A cold reader loads the catalog
-and ONE card. Never the whole cards folder. If a question needs three
-cards, the map is missing a card or a door.
+mini-summaries that grow into a second map. A short prose orientation (three
+sentences, what the territory IS) may sit above the doors; anything longer
+is a tour growing. A cold reader loads the catalog and ONE card. Never the
+whole cards folder. If a question needs three cards, the map is missing a
+card or a door.
+
+**Write the catalog last and put it first.** You do not know what routes
+until you know what is there — a catalog drafted before the cards is a plan
+wearing a map's clothes.
 
 ## Rule 6 — the walk is two hops, then stop
 

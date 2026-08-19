@@ -1,5 +1,11 @@
 # Catalog — the cruise data layer
 
+The data layer behind a cruise storefront: a PostgreSQL schema holding the
+sellable product (offerings, departures, a 1.3M-row price lattice, fares,
+cabins, live bookings) plus the cross-vertical geo tables it leans on;
+per-supplier staging schemas feeding it; and a Cloudflare D1 edge cache,
+rebuilt blue-green, that the storefront actually reads.
+
 Load this file, open ONE card, stop. Inventory grounded live 2026-08-18
 (PG via `pg_stat_user_tables` / `pg_constraint`; D1 via the sync engine).
 
