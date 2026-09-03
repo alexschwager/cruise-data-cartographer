@@ -1,7 +1,7 @@
 # fare_tier — a line's fare product: inclusions on one axis, promo identity on the other
 
 status: live
-source: pg:cruise_v2.fare_tier (78 rows) · pg:cruise_v2.fare_tier_item (598) · pg:cruise_v2.fare_tier_item_price (260) · pg:cruise_v2.fare_tier_supplier_codes (74) — live 2026-08-18
+source: pg:cruise_v2.fare_tier (78 rows) · pg:cruise_v2.fare_tier_item (598) · pg:cruise_v2.fare_tier_item_price (260) · pg:cruise_v2.fare_tier_supplier_codes (74) — live 2026-08-18 · checkable: evidence/cv2-projection-lists.txt (the fare_tier/inclusion split)
 
 ## What it is (and why it is shaped this way)
 

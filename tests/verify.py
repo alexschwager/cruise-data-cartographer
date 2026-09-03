@@ -106,6 +106,14 @@ def check_map(map_dir):
     for cf in card_files:
         check_card(cards_dir / cf, cards_dir=cards_dir)
 
+    # Evidence excerpts: every 'evidence/<file>' a card cites must resolve, so the
+    # checkable-source excerpts can't rot the way an unanchored citation does.
+    evdir = HERE.parent / "evidence"
+    for cf in card_files:
+        for ev in sorted(set(re.findall(r"evidence/([A-Za-z0-9._-]+)",
+                                        (cards_dir / cf).read_text(encoding="utf-8")))):
+            check(f"{cf}: evidence/{ev} resolves", (evdir / ev).exists())
+
     # Drift-guard (comp #11 fix): the README's stated check count must equal the real
     # total, so the number is regenerated-by-failure instead of typed and left to rot.
     # Add a card and this fails until the README is corrected — it cannot drift silently.

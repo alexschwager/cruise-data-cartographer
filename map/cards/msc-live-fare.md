@@ -1,7 +1,7 @@
 # staging.msc_live_fare — wired, empty, and empty for a reason
 
 status: live-empty
-source: pg:staging.msc_live_fare (0 rows, live 2026-08-18) · wiring: grep across backend/ + scripts/ hits 4 files (2026-08-18)
+source: pg:staging.msc_live_fare (0 rows, live 2026-08-18) · wiring: grep across backend/ + scripts/ hits 4 files (2026-08-18) · checkable: evidence/row-counts.txt (still 0, 2026-09-03)
 
 ## What it is (and why it is shaped this way)
 

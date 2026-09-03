@@ -1,0 +1,32 @@
+# Source excerpt — live row counts — captured 2026-09-03
+#
+# Proves the map's status claims without exposing a single row. Counts come from
+# pg_stat_user_tables (an estimate maintained by the planner) — the sanctioned way
+# to know "is it populated" without a SELECT on the table.
+#
+# Query (SELECT-only, counts not rows):
+#   SELECT schemaname, relname, n_live_tup FROM pg_stat_user_tables WHERE ...
+
+cruise_v2.sub_region                        = 47        (was 46 on 2026-08-18)
+cruise_v2.offering                          = 4,640     (was 4,167)
+cruise_v2.departure                         = 14,047    (was 12,833)
+cruise_v2.departure_cabin_fare_price        = 2,078,241 (was 1,311,791 — the price lattice grew ~60%)
+cruise_v2.fare_tier                         = 112       (was 78)
+cruise_v2.cabin_category                    = 2,185     (unchanged)
+cruise_v2.booking                           = 681       (was 405)
+cruise_v2.booking_guest                     = 1,105     (was 665 — PII, counted never read)
+public.ports_master                         = 2,007     (was 2,004)
+public.subregions                           = 146       (unchanged — the wrong-neighbour geo axis)
+public.regions                              = 29,776    (was 26,688 — hotel/zone spine)
+public.port_supplier_mappings               = 7,984     (was 8,729)
+public.port_id_translation_v2_to_master     = 306       (unchanged — LEFTOVER, rows present, 0 code refs)
+staging.msc_live_fare                       = 0         (unchanged — LIVE-EMPTY, wired, refill gated)
+cruise_v2.destination_supplier_codes        = 0         (unchanged — GHOST, 0 rows, 0 code refs)
+
+# Rule 8 in the wild ("the map decays, and says so"): between 2026-08-18 and
+# 2026-09-03 the COUNTS drifted (the lattice alone grew by ~0.77M rows), but every
+# STRUCTURAL claim held — the ghost is still a ghost (0), the leftover still a
+# leftover (306, unread), the live-empty still empty (0, wired). The map's cards
+# carry the 2026-08-18 numbers as their stamped capture; this excerpt is the
+# 2026-09-03 re-check. The facts the map is ABOUT survived the drift. That is the
+# whole point of citing structure, not memorising counts.

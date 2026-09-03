@@ -54,11 +54,11 @@ python3 tests/verify.py selftest
 ```
 
 Two expectations: the shipped map passes the full structural audit
-(156 checks: every door resolves, catalog↔cards bijection, no counts
+(163 checks: every door resolves, catalog↔cards bijection, no counts
 stored in the catalog, per-card status/source/sections, evidence-of-absence
-on dead cards, dated cites, size caps, resolving cross-refs, and a
-self-guard that fails if *this number* ever drifts from the real total) —
-and the
+on dead cards, dated cites, size caps, resolving cross-refs, every cited
+`evidence/` excerpt resolves, and a self-guard that fails if *this number*
+ever drifts from the real total) — and the
 fixture photocopy card (`tests/fixtures/card-bad.md`: pasted DDL, a
 column-by-column restatement, a "how the week goes" tour, no wrong
 neighbour) **fails on six checks.** `verify.py map` runs the audit alone;
@@ -101,6 +101,21 @@ as the 156 checks.
 reader. A true non-technical *human* has never been sat in front of this
 map's front door and watched to see if they bounce off it — the single most
 convincing test a map can carry, and the one this repo does not yet have.
+
+## Checkable without our database (evidence/)
+
+The cards cite a private PostgreSQL database and two private repos — a reader can
+read a card but can't open the source it points at. That is the gap comp #11 named
+as the field's biggest miss. `evidence/` closes it for the load-bearing claims:
+small, dated, SELECT-only excerpts (no rows, no credentials) a stranger can check
+the cards against, and re-run against their own database with the query printed at
+the top of each file. The marquee example — `evidence/fk-ports_master.txt` — is the
+actual `pg_constraint` output showing `sub_region_id → cruise_v2.sub_region`, so the
+sharpest claim on the map is now verifiable by anyone, not just its author. The
+excerpts never outrank the live database (rules.md Rule 4); they exist so a claim
+can be *checked*. `evidence/row-counts.txt` also captures the map decaying on
+schedule (Rule 8): re-read 2026-09-03, the counts had drifted — the price lattice
+grew ~60% — and every structural claim held.
 
 ## The folder
 

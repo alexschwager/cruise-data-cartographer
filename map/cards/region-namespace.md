@@ -1,7 +1,7 @@
 # "region" — one word, three namespaces (namespace card)
 
 status: live
-source: pg:cruise_v2.sub_region (46 rows) · pg:public.subregions (146) · pg:public.regions (26,688) · pg:public.cruise_line_subregions (550) — live 2026-08-18
+source: pg:cruise_v2.sub_region (46 rows) · pg:public.subregions (146) · pg:public.regions (26,688) · pg:public.cruise_line_subregions (550) — live 2026-08-18 · checkable: evidence/fk-ports_master.txt (FK re-verified 2026-09-03)
 
 ## What it is (and why it is shaped this way)
 

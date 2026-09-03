@@ -1,0 +1,22 @@
+# Source excerpt — ports_master foreign keys — captured 2026-09-03
+#
+# The load-bearing proof for the map's sharpest card: ports_master.sub_region_id
+# points at cruise_v2.sub_region, NOT public.subregions (the wrong neighbour whose
+# name lies). A reader without our database can check the CARD against THIS, and
+# THIS against their own DB with the same query. The live DB still wins; this is a
+# dated, re-runnable excerpt, not a second source of truth.
+#
+# Query (SELECT-only, schema not rows):
+#   SELECT conname, pg_get_constraintdef(oid)
+#   FROM pg_constraint
+#   WHERE conrelid = 'public.ports_master'::regclass AND contype = 'f'
+#   ORDER BY conname;
+
+fk_ports_master_country       FOREIGN KEY (country_code)   REFERENCES countries(country_code)
+fk_ports_master_sub_region    FOREIGN KEY (sub_region_id)  REFERENCES cruise_v2.sub_region(sub_region_id) ON DELETE SET NULL
+ports_master_story_region_id_fkey  FOREIGN KEY (story_region_id) REFERENCES cruise_v2.story_regions(id)
+
+# Read the middle row: sub_region_id → cruise_v2.sub_region. There is NO FK to
+# public.subregions. The join-by-name to public.subregions runs and returns
+# plausible garbage precisely because nothing enforces it — see
+# map/cards/region-namespace.md and map/cards/ports-master.md.

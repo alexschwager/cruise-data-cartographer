@@ -1,7 +1,7 @@
 # port_id_translation_v2_to_master — 306 rows nothing reads
 
 status: leftover
-source: pg:public.port_id_translation_v2_to_master (306 rows, live 2026-08-18)
+source: pg:public.port_id_translation_v2_to_master (306 rows, live 2026-08-18) · checkable: evidence/row-counts.txt (still 306, 2026-09-03)
 
 ## What it is (and why it is shaped this way)
 

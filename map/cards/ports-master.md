@@ -1,7 +1,7 @@
 # ports_master — THE port table (there is no cruise_v2.port)
 
 status: live
-source: pg:public.ports_master (2,004 rows, live 2026-08-18) · pg_constraint: fk_ports_master_sub_region FOREIGN KEY (sub_region_id) REFERENCES cruise_v2.sub_region ON DELETE SET NULL · pg_constraint on cruise_v2.itinerary_stop: fk_itinerary_stop_port_id → ports_master(id)
+source: pg:public.ports_master (2,004 rows, live 2026-08-18) · pg_constraint: fk_ports_master_sub_region FOREIGN KEY (sub_region_id) REFERENCES cruise_v2.sub_region ON DELETE SET NULL · pg_constraint on cruise_v2.itinerary_stop: fk_itinerary_stop_port_id → ports_master(id) · checkable: evidence/fk-ports_master.txt (re-verified 2026-09-03)
 
 ## What it is (and why it is shaped this way)
 

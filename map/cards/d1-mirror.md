@@ -1,7 +1,7 @@
 # the D1 mirror — cv2_* edge cache the storefront reads (mirror card)
 
 status: live
-source: sync/sync_engine.py:180 (CRUISE_V2_TABLES, slotted) · sync/sync_engine.py:186-209 (CRUISE_V2_SINGLE) · sync/sync_engine.py:211+ (rebuild-gate sources) · sync/run_sync.py:16-24 (operator remote sequence) — all read 2026-08-18
+source: sync/sync_engine.py:180 (CRUISE_V2_TABLES, slotted) · sync/sync_engine.py:186-209 (CRUISE_V2_SINGLE) · sync/sync_engine.py:211+ (rebuild-gate sources) · sync/run_sync.py:16-24 (operator remote sequence) — all read 2026-08-18 · checkable: evidence/cv2-projection-lists.txt
 
 ## What it is (and why it is shaped this way)
 

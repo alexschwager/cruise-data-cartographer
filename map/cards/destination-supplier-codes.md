@@ -1,7 +1,7 @@
 # destination_supplier_codes — a name with no wiring and no data
 
 status: ghost
-source: pg:cruise_v2.destination_supplier_codes (0 rows, live 2026-08-18)
+source: pg:cruise_v2.destination_supplier_codes (0 rows, live 2026-08-18) · checkable: evidence/row-counts.txt (still 0, 2026-09-03)
 
 ## What it is (and why it is shaped this way)
 

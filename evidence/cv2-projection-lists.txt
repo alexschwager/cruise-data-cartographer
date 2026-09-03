@@ -1,0 +1,30 @@
+# Source excerpt — the D1 edge-cache projection lists — captured 2026-09-03
+# from the Cloudflare Worker sync engine (sync/sync_engine.py).
+#
+# Proves two map claims a reader can't otherwise check:
+#   1. The cv2_* projection is SPLIT — cv2_fare_tier (tier metadata) and cv2_inclusion
+#      (the inclusion set) are DIFFERENT projections. This is the fact cold-walk-1
+#      guessed wrong ("fact → cv2_fare_tier → edge") and the fare-tier card now carries.
+#   2. The "load-bearing list" — a table CREATEd + mapped but ABSENT from these lists
+#      is never fetched/filled. Membership here is what makes a projection real.
+
+# Slotted, blue-green (_a / _b behind the active-slot pointer):
+CRUISE_V2_TABLES = ['cv2_search_card', 'cv2_card_facet']
+
+# Single-table (DELETE + refill), the dimension/product projections:
+CRUISE_V2_SINGLE = [
+    'cv2_fx_rate',
+    'cv2_destination', 'cv2_sub_region', 'ports_master', 'cv2_cruise_line',
+    'cv2_itinerary_stop', 'cv2_cabin_class', 'cv2_cabin_category',
+    'cv2_cabin_macro_category',
+    'cv2_fare_tier', 'cv2_inclusion', 'cv2_extra', 'cv2_offering_extra',
+    'cv2_review_summary', 'cv2_faq', 'cv2_hotel_bundle',
+    'cv2_fare_class_price',
+    'cv2_ship_facts', 'cv2_onboard_section', 'cv2_ship_venue',
+    'cv2_departure_gateway',
+]
+
+# Note 'cv2_fare_tier' and 'cv2_inclusion' as separate entries (the split), and
+# 'ports_master' carrying no cv2_ prefix (it is the cross-vertical port master, not
+# a cruise-only projection) — both facts the cards call out. See
+# map/cards/d1-mirror.md and map/cards/fare-tier.md.
