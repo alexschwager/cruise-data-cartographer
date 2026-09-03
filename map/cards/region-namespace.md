@@ -25,6 +25,10 @@ each line's own marketing regions onto axis 1.
   ports_master, a deleted sub_region silently un-regions its ports.
 - Axis 3 changes belong to the hotel/zone pipeline entirely — nothing
   cruise reads them.
+- **To add a maritime region** (e.g. Norwegian Fjords): INSERT one row into
+  `cruise_v2.sub_region` (`\d cruise_v2.sub_region` for columns), then
+  attach ports via `ports_master.sub_region_id`. Check the 46 live rows
+  first — the region may already exist.
 
 ## Does not hit — the wrong neighbour
 
@@ -33,3 +37,7 @@ each line's own marketing regions onto axis 1.
   RUNS and returns plausible garbage — the documented way this territory
   fakes "corruption." Always resolve region joins from the FK definition,
   never the table name.
+- **Adding a region to `cruise_line_subregions` instead.** That table (550)
+  maps a LINE's own marketing region names onto axis 1 — it is not the
+  canonical axis. A new maritime region goes in `cruise_v2.sub_region`
+  first; a line's marketing label for it is a *later, separate* row here.

@@ -54,15 +54,17 @@ python3 tests/verify.py selftest
 ```
 
 Two expectations: the shipped map passes the full structural audit
-(153 checks: every door resolves, catalog↔cards bijection, no counts
+(156 checks: every door resolves, catalog↔cards bijection, no counts
 stored in the catalog, per-card status/source/sections, evidence-of-absence
-on dead cards, dated cites, size caps, resolving cross-refs) — and the
+on dead cards, dated cites, size caps, resolving cross-refs, and a
+self-guard that fails if *this number* ever drifts from the real total) —
+and the
 fixture photocopy card (`tests/fixtures/card-bad.md`: pasted DDL, a
 column-by-column restatement, a "how the week goes" tour, no wrong
 neighbour) **fails on six checks.** `verify.py map` runs the audit alone;
 `verify.py card <file>` audits one card.
 
-## Two real walks, published with their defects (receipts/)
+## Five real walks, published with their defects (receipts/)
 
 A fresh model instance with no memory of the territory was handed the
 catalog, allowed ONE card, and asked a real product question ("wifi
@@ -84,6 +86,21 @@ the structure makes: the doors route by shape, not only by obedience. Its
 own caveat is kept prominently: the walk was pre-warmed, because the cards
 had already absorbed cold-walk-1's fixes; the virgin map's failure is the
 first receipt. The pair is the honest unit.
+
+`receipts/cold-walks-2-4.md` adds **three more** — a stranger each, on the
+three highest-traffic cards (region / booking-PII / supplier-ports), on
+questions the author did not write. All three reached the right card from
+the catalog unaided and answered in two hops; each still found a real card
+gap. Four were fixed on the cards: a second wrong-neighbour the region card
+missed (`cruise_line_subregions`), a genuine readable-vs-PII ambiguity on
+the money card, an INSERT pointer, and a resolver next-hop. That is five
+walked receipts against thirteen cards — walk evidence on the same footing
+as the 156 checks.
+
+**The gap that remains, stated plainly:** every walk here is a *model*
+reader. A true non-technical *human* has never been sat in front of this
+map's front door and watched to see if they bounce off it — the single most
+convincing test a map can carry, and the one this repo does not yet have.
 
 ## The folder
 
@@ -145,13 +162,13 @@ earns its keep, and a catalog that narrates is a tour growing).
 - **"Cards cite source; source wins."** The verifier checks cites exist
   and are dated — not that they are still true. A card is re-verified on
   touch (rules.md Rule 8); between touches it decays like any map.
-- **"Two hops suffice."** Demonstrated on two real walks (one cold, one
-  uninstructed control) and one constructed set in examples.md. Walk 1's
-  caveat stands: one question needed a fact the card lacked (now added) —
-  and the control's caveat stands with it: it validated the *fixed* map,
-  not the virgin one. Both walks used the same question; the next receipt
-  should be a new one. More walks would find more — that is what
-  receipts/ is for.
+- **"Two hops suffice."** Demonstrated on **five real walks** — one cold,
+  one uninstructed control, and three more on questions the author did not
+  write against the three highest-traffic cards — plus a constructed set in
+  examples.md. All five landed the right card in two hops; each still found
+  a real gap (now fixed). But every walker is a *model*: a true
+  non-technical human has never been tested against the front door, and that
+  is the honest ceiling on this claim (see the walks section above).
 - **"No photocopies."** Enforced by size caps and fence caps; a prose
   restatement under the cap slips the scanner. The real line is rules.md
   Rule 4, held by a human.

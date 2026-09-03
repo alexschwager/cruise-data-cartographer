@@ -21,7 +21,9 @@ you touch before assuming which direction it reads).
   error anywhere (a "confidently wrong link, not a missing one").
 - Unresolvable codes are supposed to FLAG for the port-resolver lane, not
   fall back to name-matching — a name-match "fix" in a loader reintroduces
-  exactly the hazard this table exists to end.
+  exactly the hazard this table exists to end. (That resolver lane is an
+  ingest AGENT, outside this data map's territory — the next hop is a
+  process, not a table.)
 - Deleting rows orphans nothing mechanically (no cascade) but silently
   degrades the next ingest run to unresolved.
 

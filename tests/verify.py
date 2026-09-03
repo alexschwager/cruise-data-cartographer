@@ -106,6 +106,17 @@ def check_map(map_dir):
     for cf in card_files:
         check_card(cards_dir / cf, cards_dir=cards_dir)
 
+    # Drift-guard (comp #11 fix): the README's stated check count must equal the real
+    # total, so the number is regenerated-by-failure instead of typed and left to rot.
+    # Add a card and this fails until the README is corrected — it cannot drift silently.
+    readme = HERE.parent / "README.md"
+    if readme.exists():
+        m = re.search(r"\((\d+)\s+checks:", readme.read_text(encoding="utf-8"))
+        claimed = int(m.group(1)) if m else None
+        actual = len(results) + 1  # +1 for this check itself
+        check(f"README check-count is current ({actual})", claimed == actual,
+              f"README says {claimed}, this run has {actual} — update the README number")
+
 
 def run_mode(argv):
     global results

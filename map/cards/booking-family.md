@@ -13,7 +13,11 @@ only, by doctrine). The standing rule that IS this card:
 **`booking_guest` and any PII-bearing table are SELECT-excluded for
 automated sessions.** Shape may be introspected; rows are never read.
 Row counts here come from `pg_stat_user_tables`, which is the sanctioned
-way to know "is it populated" without touching a row.
+way to know "is it populated" without touching a row. **What the exclusion
+does and does not cover:** the `booking` HEADER and `booking_price_line`
+are readable (dates, ids, amounts — scope "last week" off the booking's
+date column, `\d booking`); the exclusion isolates the *guest PII* in
+`booking_guest`. So a booking COUNT is self-serviceable; guest NAMES are not.
 
 ## Hits — if you change this
 
